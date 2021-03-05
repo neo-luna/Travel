@@ -71,6 +71,7 @@ void APlayerShip::BeginPlay()
 
 	PulsingValue = 1;
 
+	ScaleValue = 1.0;
 }
 
 // Called every frame
@@ -176,17 +177,11 @@ void APlayerShip::ConstraintMoving()
 /* BLOCK of TurbineFire*/
 void APlayerShip::ScaleTurbineFire()
 {
-	ScaleValue = 1.5;
-
-	TurbineFireLeft->SetRelativeScale3D(FVector(ScaleValue, ScaleValue, ScaleValue));
-	TurbineFireRight->SetRelativeScale3D(FVector(ScaleValue, ScaleValue, ScaleValue));
+	ScaleValue = 1.5;	
 }
 void APlayerShip::UnScaleTurbineFire()
 {
 	ScaleValue = 1.0;
-
-	TurbineFireLeft->SetRelativeScale3D(FVector(ScaleValue, ScaleValue, ScaleValue));
-	TurbineFireRight->SetRelativeScale3D(FVector(ScaleValue, ScaleValue, ScaleValue));
 }
 void APlayerShip::PulsingScale()
 {
@@ -196,13 +191,13 @@ void APlayerShip::PulsingScale()
 
 	if (PulsingValue == 1)
 	{
-		PulsingScale = 1.0f;
+		PulsingScale = 1.0f * ScaleValue;
 		TurbineFireLeft->SetRelativeScale3D(FVector(PulsingScale, PulsingScale, PulsingScale));
 		TurbineFireRight->SetRelativeScale3D(FVector(PulsingScale, PulsingScale, PulsingScale));
 	}
 	if (PulsingValue == -1)
 	{
-		PulsingScale = 1.2f;
+		PulsingScale = 1.2f * ScaleValue;
 		TurbineFireLeft->SetRelativeScale3D(FVector(PulsingScale, PulsingScale, PulsingScale));
 		TurbineFireRight->SetRelativeScale3D(FVector(PulsingScale, PulsingScale, PulsingScale));
 	}
