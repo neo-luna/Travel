@@ -36,6 +36,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		int GIScore;
 
+	UPROPERTY(BlueprintReadWrite)
+		int GIBestScore;
+
 private:
 	TSubclassOf<class UUserWidget>PauseMenuWidgetClass;
 

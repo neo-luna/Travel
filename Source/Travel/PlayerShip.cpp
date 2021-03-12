@@ -12,6 +12,7 @@
 #include "BotProjectile.h"
 #include "TravelGameInstance.h"
 #include "Materials/MaterialInterface.h"
+#include "TravelSaveGame.h"
 
 // Sets default values
 APlayerShip::APlayerShip()
@@ -72,6 +73,8 @@ void APlayerShip::BeginPlay()
 	PulsingValue = 1;
 
 	ScaleValue = 1.0;
+
+	LoadScore();
 }
 
 // Called every frame
@@ -134,6 +137,8 @@ void APlayerShip::DestroyPlayerShip_Implementation()
 {
 	if (Tries == 0)
 	{
+		SaveScore();
+
 		Destroy();
 	}
 }
@@ -300,4 +305,32 @@ void APlayerShip::CheckScore()
 		Tries = 0;
 	}
 
+}
+void APlayerShip::SaveScore()
+{
+	/* Calling after PlayerShip destroy*/
+	class UTravelSaveGame*SaveGameInstance = Cast<UTravelSaveGame>(UGameplayStatics::CreateSaveGameObject(UTravelSaveGame::StaticClass()));
+
+	if (true)
+	{
+		if (TravelGameInstance->GIScore > TravelGameInstance->GIBestScore)
+		{
+			TravelGameInstance->GIBestScore = TravelGameInstance->GIScore;
+
+			SaveGameInstance->PlayerShipScore = TravelGameInstance->GIBestScore;
+			UGameplayStatics::SaveGameToSlot(SaveGameInstance, SaveGameInstance->PlayerShipSlotName, SaveGameInstance->PlayerShipIndex);
+		}
+		
+	}
+}
+void APlayerShip::LoadScore()
+{
+	class UTravelSaveGame*LoadGameInstance = Cast<UTravelSaveGame>(UGameplayStatics::CreateSaveGameObject(UTravelSaveGame::StaticClass()));
+
+	LoadGameInstance = Cast<UTravelSaveGame>(UGameplayStatics::LoadGameFromSlot(LoadGameInstance->PlayerShipSlotName, LoadGameInstance->PlayerShipIndex));
+
+	if (LoadGameInstance)
+	{
+		TravelGameInstance->GIBestScore = LoadGameInstance->PlayerShipScore;
+	}
 }

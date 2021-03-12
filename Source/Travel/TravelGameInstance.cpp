@@ -14,6 +14,8 @@ UTravelGameInstance::UTravelGameInstance(const FObjectInitializer & ObjectInitia
 	PauseMenuWidgetClass = PauseMenuWidget.Class;
 
 	GIScore = 0;
+
+	GIBestScore = 0;
 }
 
 void UTravelGameInstance::Init()

@@ -118,4 +118,8 @@ public:
 	int PauseTurn;
 	/* Flag to checking GIScore*/
 	bool ScoreCheck;
+	/* Save/Load Score*/
+	UFUNCTION(BlueprintCallable)
+		void SaveScore();
+	void LoadScore();
 };
