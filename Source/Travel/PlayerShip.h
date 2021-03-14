@@ -122,4 +122,5 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void SaveScore();
 	void LoadScore();
+
 };

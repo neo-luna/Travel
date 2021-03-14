@@ -24,8 +24,8 @@ AAsteroid::AAsteroid()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(Capsule);
 
-	MinVal = 2;
-	MaxVal = 5;
+	MinAsteroidVelocity = 2;
+	MaxAsteroidVelocity = 5;
 
 	Quantity = 1;
 }
@@ -42,7 +42,7 @@ void AAsteroid::BeginPlay()
 	SetActorScale3D(FVector(ScaleParam, ScaleParam, ScaleParam));
 
 	/*range velocity an asteroid*/
-	VelocityRange = FMath::FRandRange(MinVal, MaxVal);
+	VelocityRange = FMath::FRandRange(MinAsteroidVelocity, MaxAsteroidVelocity);
 
 	/*range rotation an asteroid*/
 	RotationRange = FMath::FRandRange(-0.3, 0.3);

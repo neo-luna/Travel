@@ -48,7 +48,7 @@ public:
 		float BotSpawnDelayRangeHigh;
 
 	/* Function of spawning asteroids*/
-	void SpawnAsteriod();
+	void SpawnAsteroid();
 
 	/* Function of spawning bots*/
 	void SpawnBot();

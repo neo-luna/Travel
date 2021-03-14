@@ -35,7 +35,7 @@ void ASpawnVolume::BeginPlay()
 	SetActorLocation(FVector(2000, 0, 0));
 
 	SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
-	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawnVolume::SpawnAsteriod, SpawnDelay, false);
+	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawnVolume::SpawnAsteroid, SpawnDelay, false);
 
 	BotSpawnDelay = FMath::FRandRange(BotSpawnDelayRangeLow, BotSpawnDelayRangeHigh);
 	GetWorldTimerManager().SetTimer(BotSpawnTimer, this, &ASpawnVolume::SpawnBot, BotSpawnDelay, false);
@@ -55,7 +55,7 @@ FVector ASpawnVolume::RandomPointInVolume()
 	return UKismetMathLibrary::RandomPointInBoundingBox(SpawnOrigin, SpawnExtent);
 }
 
-void ASpawnVolume::SpawnAsteriod()
+void ASpawnVolume::SpawnAsteroid()
 {
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Owner = this;
@@ -70,7 +70,7 @@ void ASpawnVolume::SpawnAsteriod()
 	Asteroid = GetWorld()->SpawnActor<AAsteroid>(BP_Asteroid, SpawnLocation, SpawnRotation, SpawnParams);
 
 	SpawnDelay = FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
-	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawnVolume::SpawnAsteriod, SpawnDelay, false);
+	GetWorldTimerManager().SetTimer(SpawnTimer, this, &ASpawnVolume::SpawnAsteroid, SpawnDelay, false);
 }
 
 void ASpawnVolume::SpawnBot()

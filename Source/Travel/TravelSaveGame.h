@@ -18,7 +18,7 @@ public:
 		
 	UTravelSaveGame();
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Save Settings")
 		int32 PlayerShipScore;
 
 	UPROPERTY(VisibleAnywhere, Category = "Save Settings")

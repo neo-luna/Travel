@@ -138,7 +138,6 @@ void APlayerShip::DestroyPlayerShip_Implementation()
 	if (Tries == 0)
 	{
 		SaveScore();
-
 		Destroy();
 	}
 }

@@ -31,11 +31,11 @@ public:
 
 	/* Value of min asteroid velocity*/
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Asteroid velocity")
-		float MinVal;
+		float MinAsteroidVelocity;
 
 	/* Value of max asteroid velocity*/
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Asteroid velocity")
-		float MaxVal;
+		float MaxAsteroidVelocity;
 
 	//Overlapping Destroy with Projectile, Bot, BotProjectile, Asteroid
 	UFUNCTION()
