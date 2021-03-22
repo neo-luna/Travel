@@ -64,4 +64,5 @@ public:
 	float SpawnDelay;
 
 	float BotSpawnDelay;
+
 };

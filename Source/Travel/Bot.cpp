@@ -60,14 +60,10 @@ void ABot::Tick(float DeltaTime)
 	FoundPlayerShip();
 
 	/* if the PlayerShip is destroyed, the Quantity of the Bot is 0*/
-	for (TObjectIterator<APlayerShip> It; It; ++It)
-	{
-		PlayerShip = *It;
 
-		if (PlayerShip->Tries == 0)
-		{
-			Quantity = 0;
-		}
+	if (TravelGameInstance->GIPlayerShipTries == 0)
+	{
+		Quantity = 0;
 	}
 }
 

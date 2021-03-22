@@ -39,6 +39,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		int GIBestScore;
 
+	/* Tries of our PlayerShip*/
+	int GIPlayerShipTries;
+
 private:
 	TSubclassOf<class UUserWidget>PauseMenuWidgetClass;
 

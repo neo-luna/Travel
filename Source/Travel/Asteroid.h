@@ -58,7 +58,5 @@ public:
 	//Quantity of Asteroid
 	int Quantity;
 
-
-
 };
 

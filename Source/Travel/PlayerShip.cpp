@@ -66,6 +66,8 @@ void APlayerShip::BeginPlay()
 	/* Resets GIScore because GIScore equals 1 in start game...*/
 	TravelGameInstance->GIScore = 0;
 
+	TravelGameInstance->GIPlayerShipTries = 3;
+
 	ScoreCheck = false;
 
 	PauseTurn = 1;
@@ -122,20 +124,20 @@ void APlayerShip::DestroyOverlap(AActor * OtherActor, AActor * OverlappedActor)
 {
 	if (Cast<AAsteroid>(OverlappedActor) != nullptr)
 	{
-		Tries = Tries -= 1;
+		TravelGameInstance->GIPlayerShipTries -= 1;
 	}
 	if (Cast<ABot>(OverlappedActor) != nullptr)
 	{
-		Tries = Tries -= 1;
+		TravelGameInstance->GIPlayerShipTries -= 1;
 	}
 	if (Cast<ABotProjectile>(OverlappedActor) != nullptr)
 	{
-		Tries = Tries -= 1;
+		TravelGameInstance->GIPlayerShipTries -= 1;
 	}
 }
 void APlayerShip::DestroyPlayerShip_Implementation()
 {
-	if (Tries == 0)
+	if(TravelGameInstance->GIPlayerShipTries == 0)
 	{
 		SaveScore();
 		Destroy();
@@ -211,11 +213,11 @@ void APlayerShip::PulsingScale()
 void APlayerShip::ChangeMaterial()
 {
 	/* Change color of PlayerShip*/
-	if (Tries == 2)
+	if (TravelGameInstance->GIPlayerShipTries == 2)
 	{
 		Mesh->SetMaterial(1, YellowMat);
 	}
-	if (Tries == 1)
+	if (TravelGameInstance->GIPlayerShipTries == 1)
 	{
 		Mesh->SetMaterial(1, RedMat);
 	}
@@ -290,7 +292,8 @@ void APlayerShip::CheckScore()
 	{
 		TravelGameInstance->GIScore = 0;
 
-		Tries = 0;
+		//Tries = 0;
+		TravelGameInstance->GIPlayerShipTries = 0;
 	}
 
 	if (TravelGameInstance->GIScore > 0)
@@ -301,7 +304,8 @@ void APlayerShip::CheckScore()
 	{
 		TravelGameInstance->GIScore = 0;
 
-		Tries = 0;
+		//Tries = 0;
+		TravelGameInstance->GIPlayerShipTries = 0;
 	}
 
 }

@@ -12,14 +12,13 @@ UTravelGameInstance::UTravelGameInstance(const FObjectInitializer & ObjectInitia
 	if (!ensure(PauseMenuWidget.Class != nullptr)) return;
 
 	PauseMenuWidgetClass = PauseMenuWidget.Class;
-
-	GIScore = 0;
-
-	GIBestScore = 0;
 }
 
 void UTravelGameInstance::Init()
 {
+	GIScore = 0;
+	GIBestScore = 0;
+
 	UE_LOG(LogTemp, Warning, TEXT("We are founded class %s "), *PauseMenuWidgetClass->GetName());
 }
 

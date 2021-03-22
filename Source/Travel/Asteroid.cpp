@@ -34,7 +34,7 @@ AAsteroid::AAsteroid()
 void AAsteroid::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	CastGameInstance();
 
 	/*scale an asteroid*/
@@ -66,14 +66,10 @@ void AAsteroid::Tick(float DeltaTime)
 	SetActorRotation(AsteroidRotation);
 
 	/* if the PlayerShip is destroyed, the Quantity of the Asteroid is 0*/
-	for (TObjectIterator<APlayerShip> It; It; ++It)
+	
+	if (TravelGameInstance->GIPlayerShipTries == 0)
 	{
-		PlayerShip = *It;
-
-		if (PlayerShip->Tries == 0)
-		{
-			Quantity = 0;
-		}
+		Quantity = 0;
 	}
 }
 
