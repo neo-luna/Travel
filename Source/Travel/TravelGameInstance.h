@@ -22,8 +22,6 @@ public:
 
 	class UUserWidget* PauseMenu;
 
-	//class APlayerController*PlayerController;
-
 	/* Function for adding widget to vieport*/
 	UFUNCTION(BlueprintCallable)
 		void ShowWidget();

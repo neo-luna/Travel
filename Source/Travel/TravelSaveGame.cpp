@@ -7,7 +7,7 @@ UTravelSaveGame::UTravelSaveGame()
 {
 	PlayerShipScore = 0;
 
-	PlayerShipSlotName = FString(TEXT("SaveSlot"));
+	PlayerShipSlotName = FString(TEXT("SaveSlot01"));
 
 	PlayerShipIndex = 0;
 }
